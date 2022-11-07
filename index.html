@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Commonly used unicodes</title>
+</head>
+
+<body>
+  <!-- <div class="alert-wrapper">
+    <div class="alert">
+      copied ← to clipboard
+    </div>
+  </div> -->
+
+
+  <div class="header-wrapper">
+    <div class="header-inner-wrapper">
+      <div class="header">
+        <h3 class="project-title">Isac Canedo</h3>
+        <p class="text">by <a href="#" target="_blank">Isac Canedo</a>
+      </div>
+      <p class="text">Commonly used unicodes, click to copy.</p>
+    </div>
+
+  </div>
+    <div id="container"></div>
+</body>
+
+<script>
+
+
+// Get the app element
+var container = document.querySelector('#container');
+
+// data
+var data = [
+  {unicode:"←" ,title:"arrow-left"},
+  {unicode:"↑" ,title:"arrow-up"},
+  {unicode:"→" ,title:"arrow-right"},
+  {unicode:"↓" ,title:"arrow-down"},
+  {unicode:"↖" ,title:"arrow-up-left"},
+  {unicode:"↗︎" ,title:"arrow-up-right"},
+  {unicode:"↙" ,title:"arrow-down-left"},
+  {unicode:"↘" ,title:"arrow-down-right"},
+  {unicode:"⟶" ,title:"arrow-long-right"},
+  {unicode:"⟵" ,title:"arrow-long-left"},
+  {unicode:"↩" ,title:"arrow-left-hook"},
+  {unicode:"↪" ,title:"arrow-right-hook"},
+  {unicode:"↺" ,title:"undo"},
+  {unicode:"↻" ,title:"redo"},
+  {unicode:"⌘" ,title:"command"},
+  {unicode:"⇪" ,title:"caps-lock"},
+  {unicode:"⌥" ,title:"option"},
+  {unicode:"⌫" ,title:"delete"},
+  {unicode:"®" ,title:"registered"},
+  {unicode:"©" ,title:"copyright"},
+  {unicode:"℗" ,title:"published"},
+  {unicode:"™" ,title:"trademark"},
+  {unicode:"№" ,title:"numero-sign"},
+  {unicode:"£" ,title:"sterling"},
+  {unicode:"€" ,title:"euro"},
+  {unicode:"¥" ,title:"yen"},
+  {unicode:"℃" ,title:"celsius"},
+  {unicode:"℉" ,title:"fahrenheit"},
+  {unicode:"❖" ,title:"diamond"},
+  {unicode:"☀" ,title:"sun"},
+  {unicode:"★" ,title:"star-filled"},
+  {unicode:"☆" ,title:"star-outline"},
+  {unicode:"✓" ,title:"check"},
+  {unicode:"※" ,title:"reference-mark"},
+  {unicode:"⁂" ,title:"asterism"},
+  {unicode:"⁖" ,title:"three-dot-punctuation"},
+  {unicode:"⁘" ,title:"four-dot-punctuation"},
+  {unicode:"⁙" ,title:"five-dot-punctuation"},
+  {unicode:"⁜" ,title:"dotted-cross"},
+  {unicode:"●" ,title:"circle"},
+  {unicode:"…" ,title:"horizontal-ellipsis"},
+  {unicode:"×" ,title:"multiplication"},
+  {unicode:"" ,title:"apple"},
+]
+
+container.innerHTML = data.map(item =>
+  `<div class="item">
+    <p class="unicode">${item.unicode}</p>
+    <p class="title">${item.title}</p>
+  </div>`
+).join('')
+
+// copies the unicode
+const items = document.querySelectorAll(".item");
+items.forEach(function(item) {
+  item.addEventListener("click", function() {
+
+    console.log("hello world");
+    const arrow = item.querySelector('.unicode').innerHTML;
+    const textarea = document.createElement('textarea');
+    textarea.value = arrow;
+    textarea.style.background = 'red';
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  });
+});
+
+// Feedback menu 
+
+const copy = () => {
+  // copy to clipbpard 
+
+  const el = document.getElementById("copy-feedback")
+  el.classList.add("show")
+
+  setTimeout(() => el.classList.remove("show"), 3000)
+}
+
+
+</script>
